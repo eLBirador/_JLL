@@ -1,0 +1,283 @@
+﻿@model MvcCms.Models.Post
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+  <!-- Page -->
+<div class="page">
+    <div class="page-header height-300 margin-bottom-30">
+        <div class="text-center blue-grey-800 margin-top-50">
+            <div class="font-size-50 margin-bottom-30 blue-grey-800">Manage valuation</div>
+        </div>
+    </div>
+    <div class="page-content container-fluid">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <h1 class="page-title margin-bottom-30">Valuation details</h1>
+                <div class="pricing-list text-left val-details-box">
+                    @Html.Partial("_detailsBox", Model)
+                </div>
+
+                <div class="pricing-footer margin-bottom-30">
+                    <a class="btn btn-primary btn-md" href="~/admin" target="_parent">Back to valuation list</a>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Status pending-->
+                <div class="widget" style="overflow: hidden;">
+                    <div class="widget-content">
+                        <div class="row no-space">
+                            <div class="col-sm-6">
+                                <div class="counter counter-lg text-left padding-30 ">
+                                    <span class="counter-number">Step 1</span>
+                                    <div class="counter-label">We are currently reviewing your submitted valuation form</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="vertical-align text-center val-stat-block-pending white padding-30 height-200">
+                                    <div class="vertical-align-middle font-size-40 width-100p">
+                                        <div class="pull-left white">
+                                            <i aria-hidden="true" class="icon icon-1x wb-more-horizontal"></i>
+                                        </div>
+                                        <div class="counter counter-md counter text-right pull-right ">
+                                            <div class="counter-number-group font-white">
+                                                <span class="counter-number">Pending</span>
+                                            </div>
+                                            <div class="counter-label text-capitalize font-size-16">Status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status on-going-->
+                <div class="widget hidden" style="overflow: hidden;">
+                    <div class="widget-content">
+                        <div class="row no-space">
+                            <div class="col-sm-6">
+                                <div class="counter counter-lg text-left padding-30 ">
+                                    <span class="counter-number">Step 1</span>
+                                    <div class="counter-label">We are on the process of conducting your valuation report</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <!--Set status to On-going-->
+                                <div class="vertical-align text-center val-stat-block-ongoing white padding-30 height-200 ">
+                                    <div class="vertical-align-middle font-size-40 width-100p">
+                                        <div class="pull-left white">
+                                            <i aria-hidden="true" class="icon icon-1x wb-loop"></i>
+                                        </div>
+                                        <div class="counter counter-md counter text-right pull-right ">
+                                            <div class="counter-number-group font-white">
+                                                <span class="counter-number">On-going</span>
+                                            </div>
+                                            <div class="counter-label text-capitalize font-size-16">Status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status complete-->
+                <div class="widget hidden" style="overflow: hidden;">
+                    <div class="widget-content">
+                        <div class="row no-space">
+                            <div class="col-sm-6">
+                                <div class="counter counter-lg text-left padding-30 ">
+                                    <span class="counter-number">Step 1</span>
+                                    <div class="counter-label">We have completed your report, please proceed to step 2</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- Set status to complete-->
+                                <div class="vertical-align text-center val-stat-block-completed white padding-30 height-200">
+                                    <div class="vertical-align-middle font-size-40 width-100p">
+                                        <div class="pull-left white">
+                                            <i aria-hidden="true" class="icon icon-1x wb-check"></i>
+                                        </div>
+                                        <div class="counter counter-md counter text-right pull-right ">
+                                            <div class="counter-number-group font-white">
+                                                <span class="counter-number">Complete</span>
+                                            </div>
+                                            <div class="counter-label text-capitalize font-size-16">Status</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="widget hidden" style="overflow: hidden;">
+                    <div class="widget-content">
+                        <div class="row no-space">
+                            <div class="col-sm-6">
+                                <div class="counter counter-lg text-left padding-30 ">
+                                    <span class="counter-number">Step 2</span>
+                                    <div class="counter-label">We'll notify via email once the report and invoice are ready for download.</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="">
+                                    <div class="vertical-align text-center val-stat-block-pending white padding-30 height-200">
+                                        <div class="vertical-align-middle font-size-40 width-100p">
+                                            <div class="pull-left white">
+                                                <i aria-hidden="true" class="icon icon-1x wb-close"></i>
+                                            </div>
+                                            <div class="counter counter-md counter text-right pull-right ">
+                                                <div class="counter-number-group font-white">
+                                                    <span class="counter-number">Not ready</span>
+                                                </div>
+                                                <div class="counter-label text-capitalize font-size-16"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="widget hidden" style="overflow: hidden;">
+                    <div class="widget-content">
+                        <div class="row no-space">
+                            <div class="col-sm-6">
+                                <div class="counter counter-lg text-left padding-30 ">
+                                    <span class="counter-number">Step 2</span>
+                                    <div class="counter-label">The report and invoice are now ready for download. Please click to download</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="">
+                                    <div class="vertical-align text-center val-stat-block-completed white padding-30 height-200">
+                                        <div class="vertical-align-middle font-size-40 width-100p">
+                                            <div class="pull-left white">
+                                                <i aria-hidden="true" class="icon icon-1x wb-download"></i>
+                                            </div>
+                                            <div class="counter counter-md counter text-right pull-right ">
+                                                <div class="counter-number-group font-white">
+                                                    <span class="counter-number">Download</span>
+                                                </div>
+                                                <div class="counter-label text-capitalize font-size-16">here</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget hidden" style="overflow: hidden;">
+                    <div class="widget-content">
+                        <div class="row no-space">
+                            <div class="col-sm-6">
+                                <div class="counter counter-lg text-left padding-30 ">
+                                    <span class="counter-number">Step 3</span>
+                                    <div class="counter-label">Upload the invoice and click submit</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="vertical-align text-center white padding-30 height-200">
+                                    <div class="vertical-align-middle font-size-40 width-100p">
+
+                                        <div class="form-group">
+                                            <div class="input-group input-group-file">
+                                                <input type="text" class="form-control" readonly="" placeholder="Attach here - Max 1MB">
+                                                <span class="input-group-btn">
+                                                    <span class="btn btn-success btn-file">
+                                                        <i class="icon wb-upload" aria-hidden="true"></i>
+                                                        <input type="file" name="" multiple="">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <a class="btn btn-primary btn-md width-100p">Submit</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="page-title margin-bottom-20">Assigned valuer</h1>
+                <div class="widget widget-shadow">
+                    <div class="widget-header bg-jll-red white padding-15 clearfix">
+                        <a class="avatar avatar-lg pull-left margin-right-20" href="javascript:void(0)">
+                            <img src="assets/portraits/16.jpg" alt="">
+                        </a>
+                        <div class="font-size-18">John Doe</div>
+                        <div class="grey-300 font-size-14">Valuer</div>
+                    </div>
+                    <div class="widget-content">
+                        <ul class="list-group list-group-bordered">
+                            <li class="list-group-item">
+                                <i class="icon wb-envelope" aria-hidden="true" draggable="true"></i>Email address: <a href="mailto:john.doe@ap.jll.com">john.doe@ap.jll.com</a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="icon wb-grid-9" aria-hidden="true" draggable="true"></i>Office number: 123 4506612
+                            </li>
+                            <li class="list-group-item">
+                                <i class="icon wb-mobile" aria-hidden="true" draggable="true"></i>Mobile number: 123 4456671
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h1 class="page-title margin-bottom-20">Notifications</h1>
+                <div class="pricing-list text-left val-details-box padding-20">
+                    <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                        <div class="media">
+                            <div class="media-left padding-right-10">
+                                <i class="icon wb-order bg-red-600 white icon-circle" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading">A new order has been placed</h6>
+                                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">5 hours ago</time>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                        <div class="media">
+                            <div class="media-left padding-right-10">
+                                <i class="icon wb-user bg-green-600 white icon-circle" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading">Completed the task</h6>
+                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">2 days ago</time>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                        <div class="media">
+                            <div class="media-left padding-right-10">
+                                <i class="icon wb-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading">Settings updated</h6>
+                                <time class="media-meta" datetime="2015-06-11T14:05:00+08:00">2 days ago</time>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+            </div>  <!-- col-lg-6-->
+        </div>
+    </div>
+</div>
+
+<!-- End Page -->

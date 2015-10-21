@@ -1,0 +1,47 @@
+﻿@model MvcCms.Models.Post
+
+<ul class="pricing-features">
+    <li>
+        <i class="icon wb-info" aria-hidden="true"></i>&nbsp;<strong>Valuation name:</strong>
+        @Html.EditorFor(model => model.Title)
+    </li>
+    <li>
+        <i class="icon wb-map" aria-hidden="true"></i>&nbsp;<strong>Valuation address:</strong>
+        @Html.EditorFor(model => model.Content)
+    </li>
+    <li>
+        <i class="icon wb-map" aria-hidden="true"></i>&nbsp;<strong>Valuation address:</strong> PWC tower level 16, 188 Quay street
+    </li>
+    <li>
+        <i class="icon wb-map" aria-hidden="true"></i>&nbsp;<strong>Suburb:</strong> Auckland central
+    </li>
+    <li>
+        <i class="icon wb-map" aria-hidden="true"></i>&nbsp;<strong>City:</strong> Auckland
+    </li>
+    <li>
+        <i class="icon wb-map" aria-hidden="true"></i>&nbsp;<strong>Postcode:</strong> 12345
+    </li>
+    <li>
+        <i class="icon wb-map" aria-hidden="true"></i>&nbsp;<strong>Google pin map:</strong>
+        <div class="example">
+            <div class="height-300" id="markersGmap" style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
+                <div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;">
+                </div>
+            </div>
+    </li>
+    <li>
+        <i class="icon wb-calendar" aria-hidden="true"></i>&nbsp;<strong>Required date:</strong> September 24, 2015
+    </li>
+    <li>
+        <div role="alert" class="alert bg-jll-midnight alert-info alert-avatar alert-dismissible font-white">
+            <button aria-label="Close" data-dismiss="alert" class="close" type="button">
+                <span aria-hidden="true">×</span>
+            </button>
+            <span class="avatar">
+                <img alt="..." src="~/assets/portraits/5.jpg">
+            </span>
+            <h4>Edit your details?</h4>
+            <p>You may contact me if you require to edit your valuation details</p>
+        </div>
+    </li>
+</ul>

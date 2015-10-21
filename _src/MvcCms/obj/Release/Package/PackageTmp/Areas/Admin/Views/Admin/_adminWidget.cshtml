@@ -1,0 +1,212 @@
+﻿<div class="col-lg-9">
+    <!-- start main content -->
+    <div class="col-lg-5">
+        <div class="widget widget-shadow" id="chartLinePie">
+            <div class="widget-content">
+                <div class="bg-jll-petrol white padding-20">
+                    <div class="font-size-20 clearfix">
+                        Report statistics
+                    </div>
+                </div>
+                <div class="padding-30">
+                    <div class="row no-space">
+                        <div class="col-xs-7">
+                            <p>
+                                <span class="icon wb-medium-point cyan-600 margin-right-5"></span>12 On-going reports
+                            </p>
+                            <p class="margin-bottom-20">
+                                <span class="icon wb-medium-point red-600 margin-right-5"></span>30 Completed reports
+                            </p>
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="ct-chart chart-pie" style="height: 129px;">
+                                <div class="vertical-align text-center" style="height:100%; width:100%; position:absolute; left:0; top:0;">
+                                    <div class="font-size-20  vertical-align-middle" style="line-height:1.1 ">
+                                        <div>42</div>
+                                        <div>Total</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="widget" style="overflow: hidden;">
+            <div class="widget-content">
+                <div class="row no-space">
+                    <div class="col-sm-6">
+                        <div class="counter counter-md vertical-align bg-white height-260">
+                            <div class="counter-number-group font-size-30 vertical-align-middle">
+                                <span class="counter-icon txt-color-olive margin-right-10"><i class="wb-users"></i></span>
+                                <span class="counter-number">9</span>
+                                <div class="font-size-20 margin-top-3">Total assigned clients</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="counter counter-md vertical-align bg-white height-260 bg-jll-olive ">
+                            <div class="counter-number-group font-size-30 vertical-align-middle font-white">
+                                <span class="counter-icon txt-color-gold margin-right-10"><i class="wb-order"></i></span>
+                                <span class="counter-number">9</span>
+                                <div class="font-size-20 margin-top-3">Total assigned valuation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <!--Start calendar -->
+        <div class="calendar-container">
+            <div class="panel">
+                <div class="padding-30" id="calendar"></div>
+            </div>
+            <!-- Edit Dialog -->
+            <div class="modal fade" id="editNewEvent" aria-hidden="true" aria-labelledby="editNewEvent"
+                 role="dialog" tabindex="-1" data-show="false">
+                <div class="modal-dialog">
+                    <form class="modal-content form-horizontal" action="#" method="post" role="form">
+                        <div class="modal-header">
+                            <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                            <h4 class="modal-title">Valuation details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="editEname">Client name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="editEname" name="editEname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="editStarts">Valuation name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="editEname" name="editEname" placeholder="Valuation name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="editEname">Valuation address:</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" rows="2" placeholder="Address city suburb postal code"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="editEnds">Required date:</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="editEnds" data-container="#editNewEvent"
+                                               data-plugin="datepicker">
+                                        <span class="input-group-addon">
+                                            <i class="icon wb-calendar" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="editPeople">Access:</label>
+                                <div class="col-sm-9">
+                                    <select id="editPeople" multiple="multiple" data-plugin="jquery-selective"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-actions">
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">View the valuation</button>
+                                <a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:void(0)">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Calendar -->
+</div><!-- end main content -->
+
+<div class="col-lg-3">
+    <!-- start sidebar -->
+
+    <div class="col-lg-12 col-md-6">
+        <div class="panel">
+            <div class="panel-body container-fluid">
+                <div class="widget-content text-center bg-white padding-40">
+                    <div class="avatar avatar-100 margin-bottom-20">
+                        <img src="~/assets/portraits/1.jpg" alt="">
+                    </div>
+                    <p class="font-size-20 blue-grey-700">John Doe</p>
+                    <p class="blue-grey-400 margin-bottom-20">JLL Valuer</p>
+                    <p class="margin-bottom-35">john.doe@ap.jll.com</p>
+                    <a class="btn btn-primary padding-horizontal-40" href="admin-manage-profile.html">Edit your profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-6">
+        <div class="panel">
+            <div class="panel-body container-fluid">
+
+                <h1 class="page-title margin-bottom-20">Notifications</h1>
+                <div class="media">
+                    <div class="media-left padding-right-10">
+                        <i class="icon wb-order bg-red-600 white icon-circle" aria-hidden="true"></i>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading">A new order has been placed</h6>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">5 hours ago</time>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left padding-right-10">
+                        <i class="icon wb-user bg-green-600 white icon-circle" aria-hidden="true"></i>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading">Last saved by John Doe</h6>
+                        <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">2 days ago</time>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left padding-right-10">
+                        <i class="icon wb-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading">Settings updated</h6>
+                        <time class="media-meta" datetime="2015-06-11T14:05:00+08:00">2 days ago</time>
+                    </div>
+                </div>
+
+                <div class="media">
+                    <div class="media-left padding-right-10">
+                        <i class="icon wb-order bg-red-600 white icon-circle" aria-hidden="true"></i>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading">A new order has been placed</h6>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">5 hours ago</time>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left padding-right-10">
+                        <i class="icon wb-user bg-green-600 white icon-circle" aria-hidden="true"></i>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading">Last saved by John Doe</h6>
+                        <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">2 days ago</time>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left padding-right-10">
+                        <i class="icon wb-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading">Settings updated</h6>
+                        <time class="media-meta" datetime="2015-06-11T14:05:00+08:00">2 days ago</time>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>  <!-- end sidebar sidebar -->

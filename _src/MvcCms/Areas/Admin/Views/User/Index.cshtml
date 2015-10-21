@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MvcCms.Models.CmsUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<h2>Indexs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            Role
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>    
+            @if (item.IsInRole("admin"))
+            { <b>admin</b> }
+            else if (item.IsInRole("author"))
+            { <b>client</b> }
+            else if (item.IsInRole("editor"))
+            { <b>e</b> }
+            else
+            { <b>System Admin</b> }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  username=item.UserName}) |
+            @Html.ActionLink("Delete", "Delete", new { username = item.UserName })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <title>Register</title>
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="/assets/css/site.min.css">
+    <link rel="stylesheet" href="/assets/css/stylesheet.css">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="/assets/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="/assets/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="/assets/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="/assets/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="/assets/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="/assets/vendor/flag-icon-css/flag-icon.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/assets/fonts/web-icons/web-icons.min.css">
+    <link rel="stylesheet" href="/assets/fonts/brand-icons/brand-icons.min.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    <!-- Inline -->
+    <link rel="stylesheet" href="/assets/examples/css/pages/login-v2.css">
+    <!--[if lt IE 9]>
+      <script src="/assets/vendor/html5shiv/html5shiv.min.js"></script>
+      <![endif]-->
+    <!--[if lt IE 10]>
+      <script src="/assets/vendor/media-match/media.match.min.js"></script>
+      <script src="/assets/vendor/respond/respond.min.js"></script>
+      <![endif]-->
+    <!-- Scripts -->
+    <script src="/assets/vendor/modernizr/modernizr.js"></script>
+    <script src="/assets/vendor/breakpoints/breakpoints.js"></script>
+    <script>
+    Breakpoints();
+    </script>
+</head>
+<body class="page-login-v2 layout-full page-dark">
+    <!--[if lt IE 8]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+    <!-- Page -->
+    <div class="page animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+        <div class="page-content">
+            <div class="page-brand-info">
+                <div class="brand">
+                    <h2 class="brand-text font-size-40">Residential valuation</h2>
+                </div>
+                <p class="font-size-20">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <a class="btn btn-primary btn-md cta-home" href="/admin/login" target="_parent">Login</a>
+            </div>
+            <div class="page-login-main">
+                <div class="brand ">
+                    <div class="jll-logo"><img class="brand-img " src="/assets/images/jll-logo.png" alt="JLL New Zealand - Commercial real estate property consultant"></div>
+                </div>
+
+                <h3 class="font-size-24">Register</h3>
+                <p>Have your residential property valuate yet?</p>
+
+                @model MvcCms.Areas.Admin.ViewModels.UserViewModel
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group form-material">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group form-material">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group form-material">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group form-material">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group form-material">
+                        @Html.LabelFor(model => model.NewPassword, htmlAttributes: new { @class = "control-label" })
+                        @Html.PasswordFor(model => model.NewPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group form-material">
+                        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group form-material">
+                        @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group form-material">
+                        @Html.LabelFor(model => model.CompanyAddress, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.CompanyAddress, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CompanyAddress, "", new { @class = "text-danger" })
+                    </div>
+                    
+                    <div class="checkbox-custom checkbox-primary">
+                        <input type="checkbox" />
+                        <label for="inputUnchecked">I agree on <a href="" target="_blank">terms and conditions</a></label>
+                    </div>
+
+                    <input type="hidden" id="SelectedRole" name="SelectedRole" value="author" />
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                }
+
+                <form class="hidden">
+
+                    <div class="form-group form-material has-error">
+                        <label class="control-label" for="inputText">First name<span class="font-jllred">*</span></label>
+                        <input type="text" class="form-control" id="inputText" name="inputText" placeholder="Field required" />
+                    </div>
+
+                    <div class="form-group form-material">
+                        <label class="control-label" for="inputText">Last name<span class="font-jllred">*</span></label>
+                        <input type="text" class="form-control" id="inputText" name="inputText" />
+                    </div>
+
+                    <div class="form-group form-material">
+                        <label class="control-label" for="inputText">Email address<span class="font-jllred">*</span></label>
+                        <input type="text" class="form-control" id="inputText" name="inputText" />
+                    </div>
+
+                    <div class="form-group form-material">
+                        <label class="control-label" for="inputText">Phone number</label>
+                        <input type="text" class="form-control" id="inputText" name="inputText" />
+                    </div>
+
+                    <div class="form-group form-material">
+                        <label class="control-label" for="inputText">Company name</label>
+                        <input type="text" class="form-control" id="inputText" name="inputText" />
+                    </div>
+
+                    <div class="form-group form-material">
+                        <label class="control-label" for="textarea">Company address</label>
+                        <textarea class="form-control" id="textarea" name="textarea" rows="2"></textarea>
+                    </div>
+
+                    <div class="checkbox-custom checkbox-primary">
+                        <input type="checkbox" />
+                        <label for="inputUnchecked">I agree on <a href="" target="_blank">terms and conditions</a></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+
+
+                </form>
+                <p>Have account already? Please go to <a href="client-login.html" target="_parent">Sign In</a></p>
+                <footer class="page-copyright">
+                    <p>Copyright 2015 Jones Lang LaSalle</p>
+                    <p><a href="http://www.jll.nz/new-zealand/en-gb/privacy-statement" target="_blank">Privacy statement</a> | <a href="http://www.jll.nz/new-zealand/en-gb/terms-of-use" target="_blank">Terms of use</a></p>
+                    <div class="social">
+                        <a class="btn btn-icon btn-round social-twitter" href="javascript:void(0)">
+                            <i class="icon bd-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-icon btn-round social-facebook" href="javascript:void(0)">
+                            <i class="icon bd-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-icon btn-round social-google-plus" href="javascript:void(0)">
+                            <i class="icon bd-google-plus" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <!-- End Page -->
+    <!-- Core  -->
+    <script src="/assets/vendor/jquery/jquery.js"></script>
+    <script src="/assets/vendor/bootstrap/bootstrap.js"></script>
+    <script src="/assets/vendor/animsition/jquery.animsition.js"></script>
+    <script src="/assets/vendor/asscroll/jquery-asScroll.js"></script>
+    <script src="/assets/vendor/mousewheel/jquery.mousewheel.js"></script>
+    <script src="/assets/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+    <script src="/assets/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+    <!-- Plugins -->
+    <script src="/assets/vendor/switchery/switchery.min.js"></script>
+    <script src="/assets/vendor/intro-js/intro.js"></script>
+    <script src="/assets/vendor/screenfull/screenfull.js"></script>
+    <script src="/assets/vendor/slidepanel/jquery-slidePanel.js"></script>
+    <!-- Plugins For This Page -->
+    <script src="/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+    <!-- Scripts -->
+    <script src="/assets/js/core.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script src="/assets/js/sections/menu.js"></script>
+    <script src="/assets/js/sections/menubar.js"></script>
+    <script src="/assets/js/sections/gridmenu.js"></script>
+    <script src="/assets/js/sections/sidebar.js"></script>
+    <script src="/assets/js/configs/config-colors.js"></script>
+    <script src="/assets/js/configs/config-tour.js"></script>
+    <script src="/assets/js/components/asscrollable.js"></script>
+    <script src="/assets/js/components/animsition.js"></script>
+    <script src="/assets/js/components/slidepanel.js"></script>
+    <script src="/assets/js/components/switchery.js"></script>
+
+
+    <!-- Scripts For This Page -->
+    <script src="/assets/js/components/jquery-placeholder.js"></script>
+
+    <script src="/assets/js/components/gmaps.js"></script>
+    <script src="/assets/examples/js/advanced/maps-google.js"></script>
+
+
+    <script>
+    (function(document, window, $) {
+      'use strict';
+
+      var Site = window.Site;
+      $(document).ready(function() {
+        Site.run();
+      });
+    })(document, window, jQuery);
+    </script>
+
+</body>
+</html>

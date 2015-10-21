@@ -1,0 +1,125 @@
+﻿@model IEnumerable<MvcCms.Models.Post>
+
+<div class="col-lg-6">
+
+    <h1 class="page-title margin-bottom-30">Valuation listing</h1>
+
+    @foreach (var item in Model)
+    {
+        <div class="pricing-list text-left val-details-box border-top-list-red">
+            <ul class="pricing-features">
+                <li>
+                    <i class="icon wb-info" aria-hidden="true"></i>&nbsp;
+                    <strong>Valuation name:</strong> @Html.DisplayFor(modelItem => item.Title)
+                </li>
+                <li>
+                    <i class="icon wb-map" aria-hidden="true"></i>&nbsp;
+                    <strong>Valuation address:</strong> @Html.DisplayFor(modelItem => item.Content)
+                </li>
+                <li class="border-bottom-box val-stat-txt-ongoing">
+                    <i class="icon wb-loop" aria-hidden="true"></i>
+                    &nbsp;<strong>Status:</strong> On-going
+                </li>
+                <li class="border-bottom-box val-stat-txt-completed hidden">
+                    <i class="icon wb-check" aria-hidden="true"></i>
+                    &nbsp;<strong>Status:</strong> Completed
+                </li>
+                <li class="border-bottom-box val-stat-txt-pending hidden">
+                    <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+                    &nbsp;<strong>Status:</strong> Pending
+                </li>
+
+                <li class="hidden">
+                    @Html.DisplayFor(modelItem => item.Created)
+                    @Html.DisplayFor(modelItem => item.Published)
+                    @Html.DisplayFor(modelItem => item.Author.DisplayName)
+                </li>
+            </ul>
+            <div class="pricing-footer">
+                <div class="hidden">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </div>
+                <a class="btn btn-primary btn-md" href="~/admin/post/details/@item.Id" target="_parent">View details</a>
+            </div>
+        </div>
+    }
+
+    <div class="pricing-list text-left val-details-box border-top-list-red hidden">
+        <ul class="pricing-features">
+            <li>
+                <i class="icon wb-info" aria-hidden="true"></i>&nbsp;<strong>Valuation name:</strong> Jones Lang LaSalle property valuation
+            </li>
+            <li>
+                <i class="icon wb-map" aria-hidden="true"></i>&nbsp;<strong>Valuation address:</strong> tower level 16, 188 Quay street PB Box 165 Auckland 1140
+            </li>
+            <li class="border-bottom-box val-stat-txt-ongoing">
+                <i class="icon wb-loop" aria-hidden="true"></i>
+                &nbsp;<strong>Status:</strong> On-going
+            </li>
+            <li class="border-bottom-box val-stat-txt-completed">
+                <i class="icon wb-check" aria-hidden="true"></i>
+                &nbsp;<strong>Status:</strong> Completed
+            </li>
+            <li class="border-bottom-box val-stat-txt-pending">
+                <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+                &nbsp;<strong>Status:</strong> Pending
+            </li>
+        </ul>
+        <div class="pricing-footer">
+            <a class="btn btn-primary btn-md" href="client-single-valuation.html" target="_parent">View details</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="panel">
+        <div class="panel-body container-fluid">
+            <h1 class="page-title margin-bottom-30">Submit new valuation</h1>
+
+            <form autocomplete="off" action="~/admin/post/create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group form-material">
+                    <label class="control-label" for="inputText">Valuation name</label>
+                    <input type="text" class="form-control" id="Title" name="Title" placeholder="Valuation name" />
+                </div>
+                <div class="form-group form-material">
+                    <label class="control-label" for="textarea">Valuation address</label>
+                    <textarea class="form-control" id="Content" name="Content" rows="2"></textarea>
+                </div>
+                <div class="form-group form-material">
+                    <label class="control-label" for="inputText">Suburb</label>
+                    <input type="text" class="form-control" id="inputText" name="inputText" placeholder="Suburb" />
+                </div>
+                <div class="form-group form-material">
+                    <label class="control-label" for="inputText">City</label>
+                    <input type="text" class="form-control" id="inputText" name="inputText" placeholder="City" />
+                </div>
+                <div class="form-group form-material">
+                    <label class="control-label" for="inputText">Postcode</label>
+                    <input type="text" class="form-control" id="inputText" name="inputText" placeholder="Postcode" />
+                </div>
+                <div class="form-group form-material">
+                    <label class="control-label" for="inputText">Pin Google map</label>
+                    <div class="example">
+                        <div class="height-300" id="markersGmap" style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group form-material">
+                    <label class="control-label" for="inputText">Required date</label>
+                    <input type="text" class="form-control" id="inputText" name="inputText" placeholder="ex. August 16, 2015" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-md margin-bottom-30">Submit</button>
+            </form>
+
+            <div class="bg-jll-olive alert dark alert-success alert-dismissible " role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                Success: Your form has been successfully sent. We'll get back to you shortly.
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MvcCms.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<!--
+    //TODO: check who is loggedin and display necessary layout
+-->
+  <!-- Page -->
+<div class="page">
+    <div class="page-header height-300 margin-bottom-30">
+        <div class="text-center blue-grey-800 margin-top-50">
+            <div class="font-size-50 margin-bottom-30 blue-grey-800">Manage valuation</div>
+        </div>
+    </div>
+    <div class="page-content container-fluid">
+        <div class="row">
+                @if (Request.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    @Html.Partial("_adminWidget", Model)
+                }
+                else
+                {
+                    @Html.Partial("_clientWidget", Model)
+                }
+         </div>
+    </div>
+</div>
+<!-- End Page -->
