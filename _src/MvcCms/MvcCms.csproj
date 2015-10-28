@@ -191,6 +191,8 @@
     <Content Include="Areas\Admin\Views\Post\_detailsBox.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_adminWidget.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_clientWidget.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Valuation.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Client.cshtml" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Views\Home\ServerTest.cshtml" />
@@ -204,6 +206,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Services\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>

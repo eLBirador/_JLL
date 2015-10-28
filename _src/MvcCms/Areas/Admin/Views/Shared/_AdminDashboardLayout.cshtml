@@ -226,17 +226,28 @@
                     <ul class="site-menu">
                         <li class="site-menu-category">General</li>
                         <li class="site-menu-item " data-name="users">
-                            <a href="admin-dashboard.html" data-slug="layout">
+                            <a href="~/admin" data-slug="layout">
                                 <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i>
                                 <span class="site-menu-title">Dashboard</span>
                             </a>
                         </li>
+
+                        @if (Request.IsAuthenticated && (User.IsInRole("admin") || Html.ViewContext.HttpContext.User.Identity.Name == "admin"))
+                        {
                         <li class="site-menu-item " data-name="users">
-                            <a href="admin-manage-client.html" data-slug="layout">
+                            <a href="~/admin/valuation" data-slug="layout">
                                 <i class="icon wb-list site-menu-icon" aria-hidden="true"></i>
                                 <span class="site-menu-title">Manage valuation</span>
                             </a>
                         </li>
+                        <li class="site-menu-item " data-name="users">
+                            <a href="~/admin/client" data-slug="layout">
+                                <i class="icon wb-list site-menu-icon" aria-hidden="true"></i>
+                                <span class="site-menu-title">Manage clients</span>
+                            </a>
+                        </li>
+                        }
+
                         <!--<li class="site-menu-item has-sub">
                           <a href="javascript:void(0)" data-slug="layout">
                             <i class="icon wb-list site-menu-icon" aria-hidden="true"></i>
@@ -265,7 +276,7 @@
                           </ul>
                         </li>-->
                         <li class="site-menu-item " data-name="users">
-                            <a href="admin-manage-profile.html" data-slug="layout">
+                            <a href="~/admin/profile" data-slug="layout">
                                 <i class="icon wb-user site-menu-icon" aria-hidden="true"></i>
                                 <span class="site-menu-title">Manage profile</span>
                             </a>
@@ -274,6 +285,7 @@
                             <a href="~/admin/logout" data-slug="layout">
                                 <i class="icon wb-power site-menu-icon" aria-hidden="true"></i>
                                 <span class="site-menu-title">Logout</span>
+                                <div>( @Html.ViewContext.HttpContext.User.Identity.Name )</div>
                             </a>
                         </li>
                     </ul>

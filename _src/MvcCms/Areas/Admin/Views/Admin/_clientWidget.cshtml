@@ -4,7 +4,9 @@
 
     <h1 class="page-title margin-bottom-30">Valuation listing</h1>
 
-    @foreach (var item in Model)
+@if (Model != null )
+{
+    foreach (var item in Model)
     {
         <div class="pricing-list text-left val-details-box border-top-list-red">
             <ul class="pricing-features">
@@ -44,6 +46,8 @@
             </div>
         </div>
     }
+}
+
 
     <div class="pricing-list text-left val-details-box border-top-list-red hidden">
         <ul class="pricing-features">

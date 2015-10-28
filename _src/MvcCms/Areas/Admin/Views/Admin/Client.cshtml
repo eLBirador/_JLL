@@ -1,0 +1,212 @@
+﻿@model IEnumerable<MvcCms.Models.CmsUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<!--
+    //TODO: check who is loggedin and display necessary layout
+-->
+<!-- Page -->
+<div class="page">
+    <div class="page-header height-300 margin-bottom-30">
+        <div class="text-center blue-grey-800 margin-top-50">
+            <div class="font-size-50 margin-bottom-30 blue-grey-800">Manage valuation</div>
+        </div>
+    </div>
+    <div class="page-content container-fluid">
+
+        <div class="page-header2">
+            <ol class="breadcrumb">
+                <li class="active">Client list</li>
+            </ol>
+            <div class="page-header-actions">
+                <a target="_blank" href="http://datatables.net" class="btn btn-sm btn-default btn-outline btn-round">
+                    <i aria-hidden="true" class="icon wb-link"></i>
+                    <span class="hidden-xs">Official Website</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xlg-8 col-md-12">
+                <!-- Start client table -->
+                <div class="panel">
+                    <div class="panel-body">
+                        <table class="table table-hover dataTable table-striped width-full" id="exampleTableTools">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Email address</th>
+                                    <th>Company</th>
+                                    <th>Valuations</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Email address</th>
+                                    <th>Company</th>
+                                    <th>Valuations</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="~/admin/client/[id]" target="_parent">@Html.DisplayFor(modelItem => item.FirstName)</a></td>
+                                    <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
+                                    <td>{number of valuation}</td>
+                                    <td>
+                                        <button data-target=".examplePositionCenter" data-toggle="modal"
+                                                type="button">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                                <tr>
+                                    <td>5</td>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>john.doe@companyname.com</td>
+                                    <td>Company name</td>
+                                    <td>3</td>
+                                    <td>
+                                        <button data-target=".examplePositionCenter" data-toggle="modal"
+                                                type="button">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-hover dataTable table-striped width-full" id="exampleFixedHeader" style="display:none;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade examplePositionCenter" aria-hidden="true" aria-labelledby="examplePositionCenter" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-center">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title">Delete</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure that you want to delete this client and all valuation reports? You will not be able to retrieve it once deleted.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-jll-steel font-white">Ok</button>
+                                <button type="button" class="btn bg-jll-steel font-white" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Modal -->
+            </div>  <!-- End Client table-->  
+
+            <div class="col-xlg-4 col-md-12">
+                <!-- Start Right Sidebar -->
+                <div class="panel">
+                    <!-- Add new client -->
+                    <div class="panel-body container-fluid">
+                        <h1 class="page-title margin-bottom-30">Add new client</h1>
+                        <form method="post" action="client-login.html">
+
+                            <div class="form-group form-material">
+                                <label class="control-label" for="inputText">First name<span class="font-jllred">*</span></label>
+                                <input type="text" class="form-control" id="inputText" name="inputText" placeholder="Field required" />
+                            </div>
+                            <div class="form-group form-material">
+                                <label class="control-label" for="inputText">Last name<span class="font-jllred">*</span></label>
+                                <input type="text" class="form-control" id="inputText" name="inputText" />
+                            </div>
+                            <div class="form-group form-material">
+                                <label class="control-label" for="inputText">Email address<span class="font-jllred">*</span></label>
+                                <input type="text" class="form-control" id="inputText" name="inputText" />
+                            </div>
+                            <div class="form-group form-material">
+                                <label class="control-label" for="inputText">Phone number</label>
+                                <input type="text" class="form-control" id="inputText" name="inputText" />
+                            </div>
+                            <div class="form-group form-material">
+                                <label class="control-label" for="inputText">Company name</label>
+                                <input type="text" class="form-control" id="inputText" name="inputText" />
+                            </div>
+                            <div class="form-group form-material">
+                                <label class="control-label" for="textarea">Company address</label>
+                                <textarea class="form-control" id="textarea" name="textarea" rows="2"></textarea>
+                            </div>
+
+                            <div class="form-group form-material">
+                                <label class="control-label" for="inputText">Password<span class="font-jllred">*</span></label>
+                                <input type="text" class="form-control" id="inputText" name="inputText" />
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block margin-bottom-30">Add</button>
+                            <div class="bg-jll-olive alert dark alert-success alert-dismissible " role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                Success: You have added a new contact.
+                            </div>
+                    </div>
+                </div> <!-- End new client -->
+
+                <div class="panel">
+                    <!-- Add new client -->
+                    <div class="panel-body container-fluid">
+                        <h1 class="page-title margin-bottom-30">Upload client and valuation reports</h1>
+                        <div class="form-group">
+                            <div class="input-group input-group-file">
+                                <input type="text" class="form-control" readonly="" placeholder="Excel (.xsls) format only">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-success btn-file">
+                                        <i class="icon wb-upload" aria-hidden="true"></i>
+                                        <input type="file" name="" multiple="">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn-primary">Upload</a>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <!-- Add new client -->
+                    <div class="panel-body container-fluid ">
+                        <a href="" class="btn btn-primary width-100p">Export client and valuation reports</a>
+                    </div>
+                </div>
+            </div>  <!-- End Right Sidebar --> 
+
+        </div>
+    </div>
+</div>
+<!-- End Page -->
+
+@Request.Browser
+
+@* comment here *@

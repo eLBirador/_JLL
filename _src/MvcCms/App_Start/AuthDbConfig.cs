@@ -14,6 +14,46 @@ namespace MvcCms.App_Start
     {
         public async static Task RegisterAdmin()
         {
+            /*
+            using (var posts = new PostRepository())
+            {
+                //var post = await posts.GetAllAsync();
+
+                if( post == null)
+                {
+                    var defaultPost = new Post
+                    {
+                        Title = "Title"
+                        //fields here
+                    }
+
+                   await posts.Create(defaultPost);
+                }
+            }
+            */
+
+            using (var users = new UserRepository())
+            {
+                var user = await users.GetUserByNameAsync("admin");
+
+                if (user == null)
+                {
+                    var adminUser = new CmsUser
+                    {
+                        UserName = "admin",
+                        Email = "admin@cms.com",
+                        DisplayName = "admin@cms.com",
+                        FirstName = "Application",
+                        LastName = "Admin"
+                    };
+
+                    //sett a default password to AppAdmin
+                    await users.CreateAsync(adminUser, "Passw0rd1234");
+                    //adding AppAdmin to "admin" Role
+                    await users.AddUserToRoleAsync(adminUser, "admin");
+                }
+            }
+
             //List All Possible Roles
             using (var roles = new RoleRepository())
             {
@@ -38,29 +78,6 @@ namespace MvcCms.App_Start
                 }
 
             }
-
-            using (var users = new UserRepository())
-            {
-                var user = await users.GetUserByNameAsync("admin@cms.com");
-
-                if (user == null)
-                {
-                    var adminUser = new CmsUser
-                    {
-                        UserName = "admin@cms.com",
-                        Email = "admin@cms.com",
-                        DisplayName = "admin@cms.com",
-                        FirstName = "Application",
-                        LastName = "Admin"
-                    };
-
-                    //sett a default password to AppAdmin
-                    await users.CreateAsync(adminUser, "Passw0rd1234");
-                    //adding AppAdmin to "admin" Role
-                    //await users.AddUserToRoleAsync(adminUser, "admin");
-                }
-            }
-
 
         }
     }

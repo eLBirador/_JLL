@@ -7,7 +7,7 @@
 <!--
     //TODO: check who is loggedin and display necessary layout
 -->
-  <!-- Page -->
+<!-- Page -->
 <div class="page">
     <div class="page-header height-300 margin-bottom-30">
         <div class="text-center blue-grey-800 margin-top-50">
@@ -16,16 +16,8 @@
     </div>
     <div class="page-content container-fluid">
         <div class="row">
-
-                @if (Request.IsAuthenticated && ( User.IsInRole("admin") || Html.ViewContext.HttpContext.User.Identity.Name == "admin" ) )
-                {
-                    @Html.Partial("_adminWidget", Model)
-                }
-                else
-                {
-                    @Html.Partial("_clientWidget", Model)
-                }
-         </div>
+            Valuation List
+        </div>
     </div>
 </div>
 <!-- End Page -->

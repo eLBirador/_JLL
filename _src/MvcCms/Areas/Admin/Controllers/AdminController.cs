@@ -5,10 +5,10 @@ using MvcCms.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Diagnostics;
 
 namespace MvcCms.Areas.Admin.Controllers
 {
@@ -17,38 +17,44 @@ namespace MvcCms.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         private readonly IPostRepository _repository;
+        private readonly IRoleRepository _roles;
         private readonly IUserRepository _users;
 
-        //public AdminController(IPostRepository repository, IUserRepository userRepository)
-        //{
-        //    _repository = repository;
-        //    _users = userRepository;
-        //}
-
-        /*
-        public AdminController()
-            : this(new PostRepository(), new UserRepository()) { }
-
-        public AdminController(PostRepository postRepository, UserRepository userRepository)
+        public AdminController() : this(new PostRepository(), new UserRepository()) { }
+        public AdminController(IPostRepository repository, IUserRepository userRepository)
         {
-           this.postRepository = postRepository;
-           this.userRepository = userRepository;
+            _users = userRepository;
+            _repository = repository; 
         }
-        */
 
         // GET: Admin/Index
         [Route("")]
+        [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
+
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("login");
+            }
+
             if (!User.IsInRole("author"))
             {
                 return View(await _repository.GetAllAsync());
             }
 
             var user = await GetLoggedInUser();
-            var posts = await _repository.GetPostsByAuthorAsync(user.Id);
+            if (user == null)
+            {
 
-            return View(posts);
+            } else
+            {
+                var posts = await _repository.GetPostsByAuthorAsync(user.Id);
+                return View(posts);
+            }
+
+            return View();
         }
 
         [HttpGet]
@@ -64,7 +70,7 @@ namespace MvcCms.Areas.Admin.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
-            /*
+            
             if(ModelState.IsValid)
             {
                 var user = await _users.GetLoginUserAsync(model.UserName, model.Password);
@@ -80,11 +86,11 @@ namespace MvcCms.Areas.Admin.Controllers
 
                     authManager.SignIn(
                         new AuthenticationProperties() { IsPersistent = model.RememberMe }, userIdentity);
+                    return RedirectToAction("index");
                 }
             }
-            */
+            
             return View( model );
-            //return RedirectToAction("index");
         }
 
         [Route("logout")]
@@ -95,6 +101,24 @@ namespace MvcCms.Areas.Admin.Controllers
             authManager.SignOut();
 
             return RedirectToAction("login", "admin");
+        }
+
+        [HttpGet]
+        [Route("valuation")]
+        [AllowAnonymous]
+        public async Task<ActionResult> Valuation()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Route("client")]
+        [AllowAnonymous]
+        public async Task<ActionResult> Client()
+        {
+            var users = await _users.GetAllUsersAsync();
+
+            return View( users );
         }
 
         [AllowAnonymous]

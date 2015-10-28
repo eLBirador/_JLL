@@ -28,6 +28,10 @@ namespace MvcCms.Models
         [Display(Name = "Required Date")]
         public DateTime? Published { get; set; }
 
+        [Display(Name = "Status")]
+        [Required]
+        public string Status { get; set; }
+
         public IList<string> Tags
         {
             get { return _tags; }
